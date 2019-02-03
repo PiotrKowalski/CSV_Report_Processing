@@ -28,7 +28,7 @@ def get_data_from_csv_file(infile_name):
     Opens file with n rows and puts data in n-elements list within dictionaries
     :return:
     n-elements list of dictionaries
-    [{ 'date': 'YYYY-MM-DD', 'country_code': '3 digit code', 'impressions': int, 'number_of_clicks': int }]
+    [{ 'date': 'YYYY-MM-DD', 'country_code': '3 char code', 'impressions': int, 'number_of_clicks': int }]
     """
     try:
         with open(infile_name, 'r', encoding="utf-8") as f:
@@ -70,16 +70,16 @@ def sum_up_numbers_of_clicks_removing_repeated(data):
     """
     Makes operations to sort and sum up impressions and number of clicks to specified date and country code
     :param data: Accepts list of n-elements list with dictionaries
-    [{ 'date': 'YYYY-MM-DD', 'country_code': '3 digit code', 'impressions': int, 'number_of_clicks': int }, {...}]
+    [{ 'date': 'YYYY-MM-DD', 'country_code': '3 char code', 'impressions': int, 'number_of_clicks': int }, {...}]
     :return:
     Returns filled, sorted, nested dictionary
     result = {
         'YYYY-MM-DD': {
-            '3 digits code': {
+            '3 char code': {
                 'impressions': int,
                  'number_of_clicks': int
             },
-            '3 digits code': {...}
+            '3 char code': {...}
         },
         'YYYY-MM-DD': {...}
     }
@@ -121,11 +121,11 @@ def generate_csv_file(data, outfile_name):
     Gets filled, sorted, nested dictionary
     data = {
         'YYYY-MM-DD': {
-            '3 digits code': {
+            '3 char code': {
                 'impressions': int,
                  'number_of_clicks': int
             },
-            '3 digits code': {...}
+            '3 char code': {...}
         },
         'YYYY-MM-DD': {...}
     }
@@ -133,7 +133,7 @@ def generate_csv_file(data, outfile_name):
     Name of the file with its suffix .csv to which data is to be generated
     :return:
     Returns n rows of text of specified look to the .csv file
-    YYYY-MM-DD, 3 digits code, number of impressions, number of clicks
+    YYYY-MM-DD, 3 char code, number of impressions, number of clicks
     """
     with open(outfile_name, mode='w', newline='') as file:
         data_writer = csv.writer(file, delimiter=',')
