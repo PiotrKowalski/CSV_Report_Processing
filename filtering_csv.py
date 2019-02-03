@@ -147,4 +147,5 @@ def generate_csv_file(data, outfile_name):
                     data[date][code]['number_of_clicks']])
 
 
-csv_filter(infile_csv_name, outfile_csv_name)
+if __name__ == '__main__':
+    csv_filter(infile_csv_name, outfile_csv_name)
